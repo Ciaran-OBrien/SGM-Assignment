@@ -6,6 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+import sys
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -22,7 +23,16 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Erasmus(object):
+class Ui_Erasmus():
+
+
+    def loadFile(self):
+        countries=[] #Create empty list
+        afile=open('countries.txt','r') #Open file for reading
+        for line in afile: #iterate through file and add each item to the list
+             countries.append(str(line).rstrip('\n'))
+        afile.close()
+
     def setupUi(self, Erasmus):
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1297, 820)
@@ -38,22 +48,8 @@ class Ui_Erasmus(object):
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.pushButton_5 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton_5.setObjectName(_fromUtf8("pushButton_5"))
-        self.verticalLayout.addWidget(self.pushButton_5)
-        self.pushButton_4 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
-        self.verticalLayout.addWidget(self.pushButton_4)
-        self.pushButton_3 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.verticalLayout.addWidget(self.pushButton_3)
-        self.pushButton_2 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.verticalLayout.addWidget(self.pushButton_2)
-        self.pushButton = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.verticalLayout.addWidget(self.pushButton)
-        # end of push button code
+
+
 
 
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)
@@ -109,28 +105,59 @@ class Ui_Erasmus(object):
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout.addWidget(self.scrollArea_2)
 
+        self.createBtns(Erasmus)
         self.retranslateUi(Erasmus)
+
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
-    def retranslateUi(self, Erasmus):
-        string = "Second test"
-        animal=[] #Create empty list
-        afile=open('animal.txt','r') #Open file for reading
+    def createBtns(self,Erasmus):
+        self.countries=[] #Create empty list
+        afile=open('countries.txt','r') #Open file for reading
         for line in afile: #iterate through file and add each item to the list
-             animal.append(str(line).rstrip('\n'))
+             self.countries.append(str(line).rstrip('\n'))
         afile.close()
+        self.btns = {}
+        i=1;
+        for country in self.countries:
+            self.btns[i] = QtGui.QPushButton(self.scrollAreaWidgetContents)
+            self.btns[i].setObjectName(_fromUtf8(country))
+            self.verticalLayout.addWidget(self.btns[i])
+            self.btns[i].setText(_translate("Erasmus", country, None))
+            print(country)
+            print(i)
+            i = i + 1
+        #
+        self.pushButton_5 = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        self.pushButton_5.setObjectName(_fromUtf8("pushButton_5"))
+        self.verticalLayout.addWidget(self.pushButton_5)
+        # self.pushButton_4 = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        # self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
+        # self.verticalLayout.addWidget(self.pushButton_4)
+        # self.pushButton_3 = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        # self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
+        # self.verticalLayout.addWidget(self.pushButton_3)
+        # self.pushButton_2 = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        # self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        # self.verticalLayout.addWidget(self.pushButton_2)
+        # self.pushButton_1 = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        # self.pushButton_1.setObjectName(_fromUtf8("pushButton_1"))
+        # self.verticalLayout.addWidget(self.pushButton_1)
+    def retranslateUi(self, Erasmus):
+
         Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
-        self.pushButton_5.setText(_translate("Erasmus", animal[3], None))
-        self.pushButton_4.setText(_translate("Erasmus", "PushButton", None))
-        self.pushButton_3.setText(_translate("Erasmus", "PushButton", None))
-        self.pushButton_2.setText(_translate("Erasmus", "PushButton", None))
-        self.pushButton.setText(_translate("Erasmus", "PushButton", None))
-        self.textBrowser_7.setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + animal[2] + "</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+
+        #self.pushButton_5.setText(_translate("Erasmus", countries[coutry], None))
+        # self.pushButton_5.setText(_translate("Erasmus", coutries[3], None))
+        # self.pushButton_4.setText(_translate("Erasmus", "PushButton", None))
+        # self.pushButton_3.setText(_translate("Erasmus", "PushButton", None))
+        # self.pushButton_2.setText(_translate("Erasmus", "PushButton", None))
+        # self.pushButton.setText(_translate("Erasmus", "PushButton", None))
+#         self.textBrowser_7.setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+# "p, li { white-space: pre-wrap; }\n"
+# "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + countries[2] + "</span></p>\n"
+# "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
 
 
 if __name__ == "__main__":
