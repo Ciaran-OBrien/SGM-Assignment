@@ -106,7 +106,7 @@ class Ui_Erasmus():
         self.horizontalLayout.addWidget(self.scrollArea_2)
 
         self.createBtns(Erasmus)
-        self.retranslateUi(Erasmus)
+
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
@@ -126,22 +126,7 @@ class Ui_Erasmus():
             print(country)
             print(i)
             i = i + 1
-        #
-        self.pushButton_5 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton_5.setObjectName(_fromUtf8("pushButton_5"))
-        self.verticalLayout.addWidget(self.pushButton_5)
-        # self.pushButton_4 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        # self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
-        # self.verticalLayout.addWidget(self.pushButton_4)
-        # self.pushButton_3 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        # self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        # self.verticalLayout.addWidget(self.pushButton_3)
-        # self.pushButton_2 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        # self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        # self.verticalLayout.addWidget(self.pushButton_2)
-        # self.pushButton_1 = QtGui.QPushButton(self.scrollAreaWidgetContents)
-        # self.pushButton_1.setObjectName(_fromUtf8("pushButton_1"))
-        # self.verticalLayout.addWidget(self.pushButton_1)
+
     def retranslateUi(self, Erasmus):
 
         Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
