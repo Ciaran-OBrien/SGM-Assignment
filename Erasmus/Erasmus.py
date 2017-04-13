@@ -132,7 +132,7 @@ class Ui_Erasmus():
         i=1
 
         for line in afile: #iterate through file and add each item to the list
-             self.university.append(str(line).rstrip('\n
+             self.university.append(str(line).rstrip('\n'))
         afile.close()
 
         self.textBrowser_7.setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
