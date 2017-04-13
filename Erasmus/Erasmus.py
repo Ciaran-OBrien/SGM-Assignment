@@ -106,6 +106,7 @@ class Ui_Erasmus():
         self.horizontalLayout.addWidget(self.scrollArea_2)
 
         self.createBtns(Erasmus)
+        self.popluateText(Erasmus)
 
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
@@ -123,9 +124,24 @@ class Ui_Erasmus():
             self.btns[i].setObjectName(_fromUtf8(country))
             self.verticalLayout.addWidget(self.btns[i])
             self.btns[i].setText(_translate("Erasmus", country, None))
-            print(country)
-            print(i)
             i = i + 1
+
+    def popluateText(self,Erasmus):
+        self.university=[]
+        afile=open('Austria/university.txt','r')
+        i=1
+
+        for line in afile: #iterate through file and add each item to the list
+             self.university.append(str(line).rstrip('\n
+        afile.close()
+
+        self.textBrowser_7.setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+        "p, li { white-space: pre-wrap; }\n"
+        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[1] + "</span></p>\n"
+        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+
 
     def retranslateUi(self, Erasmus):
 
