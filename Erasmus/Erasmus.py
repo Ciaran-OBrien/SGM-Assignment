@@ -65,49 +65,48 @@ class Ui_Erasmus():
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.gridLayout = QtGui.QGridLayout()
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.textBrowser_4 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_4.setObjectName(_fromUtf8("textBrowser_4"))
-        self.gridLayout.addWidget(self.textBrowser_4, 3, 0, 1, 1)
-        self.textBrowser_6 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_6.setObjectName(_fromUtf8("textBrowser_6"))
-        self.gridLayout.addWidget(self.textBrowser_6, 1, 0, 1, 1)
-        self.textBrowser = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
-        self.gridLayout.addWidget(self.textBrowser, 5, 0, 1, 1)
-        self.textBrowser_2 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
-        self.gridLayout.addWidget(self.textBrowser_2, 5, 1, 1, 1)
-        self.textBrowser_3 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_3.setObjectName(_fromUtf8("textBrowser_3"))
-        self.gridLayout.addWidget(self.textBrowser_3, 4, 0, 1, 1)
-        self.textBrowser_5 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_5.setObjectName(_fromUtf8("textBrowser_5"))
-        self.gridLayout.addWidget(self.textBrowser_5, 2, 0, 1, 1)
-        self.textBrowser_7 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_7.setObjectName(_fromUtf8("textBrowser_7"))
-        self.gridLayout.addWidget(self.textBrowser_7, 0, 0, 1, 1)
-        self.textBrowser_8 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_8.setObjectName(_fromUtf8("textBrowser_8"))
-        self.gridLayout.addWidget(self.textBrowser_8, 1, 1, 1, 1)
-        self.textBrowser_9 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
-        self.gridLayout.addWidget(self.textBrowser_9, 2, 1, 1, 1)
-        self.textBrowser_10 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_10.setObjectName(_fromUtf8("textBrowser_10"))
-        self.gridLayout.addWidget(self.textBrowser_10, 3, 1, 1, 1)
-        self.textBrowser_11 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
-        self.gridLayout.addWidget(self.textBrowser_11, 4, 1, 1, 1)
-        self.textBrowser_12 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        self.textBrowser_12.setObjectName(_fromUtf8("textBrowser_12"))
-        self.gridLayout.addWidget(self.textBrowser_12, 0, 1, 1, 1)
+        # self.textBrowser_4 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_4.setObjectName(_fromUtf8("textBrowser_4"))
+        # self.gridLayout.addWidget(self.textBrowser_4, 3, 0, 1, 1)
+        # self.textBrowser_6 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_6.setObjectName(_fromUtf8("textBrowser_6"))
+        # self.gridLayout.addWidget(self.textBrowser_6, 1, 0, 1, 1)
+        # self.textBrowser = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
+        # self.gridLayout.addWidget(self.textBrowser, 5, 0, 1, 1)
+        # self.textBrowser_2 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
+        # self.gridLayout.addWidget(self.textBrowser_2, 5, 1, 1, 1)
+        # self.textBrowser_3 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_3.setObjectName(_fromUtf8("textBrowser_3"))
+        # self.gridLayout.addWidget(self.textBrowser_3, 4, 0, 1, 1)
+        # self.textBrowser_5 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_5.setObjectName(_fromUtf8("textBrowser_5"))
+        # self.gridLayout.addWidget(self.textBrowser_5, 2, 0, 1, 1)
+        # self.textBrowser_7 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_7.setObjectName(_fromUtf8("textBrowser_7"))
+        # self.gridLayout.addWidget(self.textBrowser_7, 0, 0, 1, 1)
+        # self.textBrowser_8 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_8.setObjectName(_fromUtf8("textBrowser_8"))
+        # self.gridLayout.addWidget(self.textBrowser_8, 1, 1, 1, 1)
+        # self.textBrowser_9 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
+        # self.gridLayout.addWidget(self.textBrowser_9, 2, 1, 1, 1)
+        # self.textBrowser_10 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_10.setObjectName(_fromUtf8("textBrowser_10"))
+        # self.gridLayout.addWidget(self.textBrowser_10, 3, 1, 1, 1)
+        # self.textBrowser_11 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
+        # self.gridLayout.addWidget(self.textBrowser_11, 4, 1, 1, 1)
+        # self.textBrowser_12 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+        # self.textBrowser_12.setObjectName(_fromUtf8("textBrowser_12"))
+        # self.gridLayout.addWidget(self.textBrowser_12, 0, 1, 1, 1)
         self.gridLayout_3.addLayout(self.gridLayout, 0, 0, 1, 1)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout.addWidget(self.scrollArea_2)
 
         self.createBtns(Erasmus)
-        self.popluateText(Erasmus)
-
+        self.createTextBrowser(Erasmus)
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
@@ -126,7 +125,7 @@ class Ui_Erasmus():
             self.btns[i].setText(_translate("Erasmus", country, None))
             i = i + 1
 
-    def popluateText(self,Erasmus):
+    def createTextBrowser(self,Erasmus):
         self.university=[]
         afile=open('Austria/university.txt','r')
         i=1
@@ -135,13 +134,22 @@ class Ui_Erasmus():
              self.university.append(str(line).rstrip('\n'))
         afile.close()
 
-        self.textBrowser_7.setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-        "p, li { white-space: pre-wrap; }\n"
-        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[1] + "</span></p>\n"
-        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+        self.textBrowser = {}
+        i=0
+        for row in range(0,5):
+            for col in range(0,2):
+                print("Row: ", row ,"Col: ", col)
+                self.textBrowser[i] = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
+                self.textBrowser[i].setObjectName(_fromUtf8("textBrowser"))
+                self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
+                self.textBrowser[i].setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                "p, li { white-space: pre-wrap; }\n"
+                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[i] + "</span></p>\n"
+                "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
 
+                i = i + 1
 
     def retranslateUi(self, Erasmus):
 
