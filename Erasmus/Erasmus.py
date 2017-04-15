@@ -27,13 +27,20 @@ class Ui_Erasmus():
 
 
     def loadFile(self):
-        countries=[] #Create empty list
+        self.countries=[] #Create empty list
         afile=open('countries.txt','r') #Open file for reading
         for line in afile: #iterate through file and add each item to the list
-             countries.append(str(line).rstrip('\n'))
+            self. countries.append(str(line).rstrip('\n'))
+        afile.close()
+
+        self.university=[]
+        afile=open('Austria/university.txt','r')
+        for line in afile: #iterate through file and add each item to the list
+             self.university.append(str(line).rstrip('\n'))
         afile.close()
 
     def setupUi(self, Erasmus):
+        self.loadFile()
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1297, 820)
         self.horizontalLayout = QtGui.QHBoxLayout(Erasmus)
@@ -49,9 +56,6 @@ class Ui_Erasmus():
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
 
-
-
-
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout.addWidget(self.scrollArea)
@@ -65,42 +69,7 @@ class Ui_Erasmus():
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.gridLayout = QtGui.QGridLayout()
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        # self.textBrowser_4 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_4.setObjectName(_fromUtf8("textBrowser_4"))
-        # self.gridLayout.addWidget(self.textBrowser_4, 3, 0, 1, 1)
-        # self.textBrowser_6 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_6.setObjectName(_fromUtf8("textBrowser_6"))
-        # self.gridLayout.addWidget(self.textBrowser_6, 1, 0, 1, 1)
-        # self.textBrowser = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
-        # self.gridLayout.addWidget(self.textBrowser, 5, 0, 1, 1)
-        # self.textBrowser_2 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
-        # self.gridLayout.addWidget(self.textBrowser_2, 5, 1, 1, 1)
-        # self.textBrowser_3 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_3.setObjectName(_fromUtf8("textBrowser_3"))
-        # self.gridLayout.addWidget(self.textBrowser_3, 4, 0, 1, 1)
-        # self.textBrowser_5 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_5.setObjectName(_fromUtf8("textBrowser_5"))
-        # self.gridLayout.addWidget(self.textBrowser_5, 2, 0, 1, 1)
-        # self.textBrowser_7 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_7.setObjectName(_fromUtf8("textBrowser_7"))
-        # self.gridLayout.addWidget(self.textBrowser_7, 0, 0, 1, 1)
-        # self.textBrowser_8 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_8.setObjectName(_fromUtf8("textBrowser_8"))
-        # self.gridLayout.addWidget(self.textBrowser_8, 1, 1, 1, 1)
-        # self.textBrowser_9 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
-        # self.gridLayout.addWidget(self.textBrowser_9, 2, 1, 1, 1)
-        # self.textBrowser_10 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_10.setObjectName(_fromUtf8("textBrowser_10"))
-        # self.gridLayout.addWidget(self.textBrowser_10, 3, 1, 1, 1)
-        # self.textBrowser_11 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
-        # self.gridLayout.addWidget(self.textBrowser_11, 4, 1, 1, 1)
-        # self.textBrowser_12 = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-        # self.textBrowser_12.setObjectName(_fromUtf8("textBrowser_12"))
-        # self.gridLayout.addWidget(self.textBrowser_12, 0, 1, 1, 1)
+
         self.gridLayout_3.addLayout(self.gridLayout, 0, 0, 1, 1)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout.addWidget(self.scrollArea_2)
@@ -127,11 +96,7 @@ class Ui_Erasmus():
             i = i + 1
 
     def createTextBrowser(self,Erasmus):
-        self.university=[]
-        afile=open('Austria/university.txt','r')
-        for line in afile: #iterate through file and add each item to the list
-             self.university.append(str(line).rstrip('\n'))
-        afile.close()
+
 
         self.textBrowser = {}
         i=0
