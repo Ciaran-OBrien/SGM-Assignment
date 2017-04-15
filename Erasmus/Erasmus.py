@@ -107,6 +107,7 @@ class Ui_Erasmus():
 
         self.createBtns(Erasmus)
         self.createTextBrowser(Erasmus)
+        self.retranslateUi(Erasmus)
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
@@ -128,8 +129,6 @@ class Ui_Erasmus():
     def createTextBrowser(self,Erasmus):
         self.university=[]
         afile=open('Austria/university.txt','r')
-        i=1
-
         for line in afile: #iterate through file and add each item to the list
              self.university.append(str(line).rstrip('\n'))
         afile.close()
@@ -142,18 +141,22 @@ class Ui_Erasmus():
                 self.textBrowser[i] = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
                 self.textBrowser[i].setObjectName(_fromUtf8("textBrowser"))
                 self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
+                i +=1
+
+
+    def retranslateUi(self, Erasmus):
+
+        Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
+        i=0
+        for row in range(0,5):
+            for col in range(0,2):
                 self.textBrowser[i].setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                 "p, li { white-space: pre-wrap; }\n"
                 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
                 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[i] + "</span></p>\n"
                 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
-
-                i = i + 1
-
-    def retranslateUi(self, Erasmus):
-
-        Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
+                i +=1
 
         #self.pushButton_5.setText(_translate("Erasmus", countries[coutry], None))
         # self.pushButton_5.setText(_translate("Erasmus", coutries[3], None))
