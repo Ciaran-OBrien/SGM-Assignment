@@ -8,6 +8,7 @@
 
 import sys
 from PyQt4 import QtCore, QtGui
+from functools import partial
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,7 +27,8 @@ except AttributeError:
 class Ui_Erasmus():
 
 
-    def loadFile(self):
+    def loadFile(self,btn,Erasmus):
+        print(btn)
         self.countries=[] #Create empty list
         afile=open('countries.txt','r') #Open file for reading
         for line in afile: #iterate through file and add each item to the list
@@ -34,13 +36,14 @@ class Ui_Erasmus():
         afile.close()
 
         self.university=[]
-        afile=open('Austria/university.txt','r')
+        afile=open(btn + '/university.txt','r')
         for line in afile: #iterate through file and add each item to the list
              self.university.append(str(line).rstrip('\n'))
         afile.close()
+        self.retranslateUi(Erasmus)
 
     def setupUi(self, Erasmus):
-        self.loadFile()
+
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1297, 820)
         self.horizontalLayout = QtGui.QHBoxLayout(Erasmus)
@@ -76,7 +79,7 @@ class Ui_Erasmus():
 
         self.createBtns(Erasmus)
         self.createTextBrowser(Erasmus)
-        self.retranslateUi(Erasmus)
+        self.loadFile("Austria",Erasmus)
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
@@ -93,7 +96,8 @@ class Ui_Erasmus():
             self.btns[i].setObjectName(_fromUtf8(country))
             self.verticalLayout.addWidget(self.btns[i])
             self.btns[i].setText(_translate("Erasmus", country, None))
-            i = i + 1
+            self.btns[i].clicked.connect(partial(self.loadFile,self.btns[i].text(),Erasmus))
+            i += 1
 
     def createTextBrowser(self,Erasmus):
 
