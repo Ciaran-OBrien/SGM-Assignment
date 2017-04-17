@@ -51,7 +51,7 @@ class Ui_Form(object):
         self.lngImG.setSizePolicy(sizePolicy)
         self.lngImG.setMinimumSize(QtCore.QSize(0, 0))
         self.lngImG.setText(_fromUtf8(""))
-        self.lngImG.setPixmap(QtGui.QPixmap(_fromUtf8("SGM-Assignment/Erasmus/images/neocreoMap.png")))
+        self.lngImG.setPixmap(QtGui.QPixmap(_fromUtf8("images/neocreoMap.png")))
         self.lngImG.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.lngImG.setWordWrap(False)
         self.lngImG.setObjectName(_fromUtf8("lngImG"))
