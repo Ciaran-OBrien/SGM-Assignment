@@ -9,7 +9,7 @@
 from PyQt4 import QtCore, QtGui
 from functools import partial
 import gettext
-lng = "ch"
+lng = "es"
 
 langtouse = gettext.translation(lng, localedir='locale', languages=[lng])
 langtouse.install()
@@ -43,7 +43,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
         self.pushButton_2.setSizePolicy(sizePolicy)
         self.pushButton_2.setMinimumSize(QtCore.QSize(705, 0))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.pushButton_2.setObjectName(_fromUtf8("singleSemesterBtn"))
         self.gridLayout_2.addWidget(self.pushButton_2, 2, 2, 1, 1)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.MinimumExpanding)
         self.gridLayout_2.addItem(spacerItem, 1, 2, 1, 1)
@@ -67,7 +67,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
         self.pushButton.setSizePolicy(sizePolicy)
         self.pushButton.setMinimumSize(QtCore.QSize(705, 0))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.pushButton.setObjectName(_fromUtf8("fullSemesterBtn"))
         self.gridLayout_2.addWidget(self.pushButton, 2, 0, 1, 1)
         self.gridLayout = QtGui.QGridLayout()
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
@@ -79,8 +79,8 @@ class Ui_Form(object):
         self.gridLayout_2.addItem(spacerItem1, 3, 2, 1, 1)
 
         self.retranslateUi(Form)
-        self.pushButton_2.clicked.connect(partial(self.printBtn,self.pushButton_2.text(),Form))
-        self.pushButton.clicked.connect(partial(self.printBtn,self.pushButton.text(),Form))
+        self.pushButton_2.clicked.connect(partial(self.printBtn,self.pushButton_2.objectName(),Form))
+        self.pushButton.clicked.connect(partial(self.printBtn,self.pushButton.objectName(),Form))
         self.lngImG.mousePressEvent = partial(self.print_some)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
