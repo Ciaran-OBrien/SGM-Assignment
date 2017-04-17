@@ -9,6 +9,10 @@
 from PyQt4 import QtCore, QtGui
 from functools import partial
 import gettext
+lng = "ch"
+
+langtouse = gettext.translation(lng, localedir='locale', languages=[lng])
+langtouse.install()
 
 
 try:
@@ -82,8 +86,8 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
-        self.pushButton_2.setText(_translate("Form","Single Semester", None))
-        self.pushButton.setText(_translate("Form", "Complete Year", None))
+        self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
+        self.pushButton.setText(_translate("Form", _('Complete Year'), None))
 
     def printBtn(self,btn,Form):
         print(btn)
