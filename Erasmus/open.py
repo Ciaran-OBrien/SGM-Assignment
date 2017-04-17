@@ -9,10 +9,8 @@
 from PyQt4 import QtCore, QtGui
 from functools import partial
 import gettext
-lng = "ch"
 
-langtouse = gettext.translation(lng, localedir='locale', languages=[lng])
-langtouse.install()
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -78,8 +76,11 @@ class Ui_Form(object):
         spacerItem4 = QtGui.QSpacerItem(20, 100, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         self.gridLayout_2.addItem(spacerItem4, 0, 1, 1, 1)
 
+        self.setLocal(Form)
         self.retranslateUi(Form)
         self.comboBox.setCurrentIndex(0)
+        # self.pushButton_2.clicked.connect(partial(self.setLocal,self.pushButton_2.objectName(),Form))
+        # self.pushButton.clicked.connect(partial(self.setLocal,self.pushButton.objectName(),Form))
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -87,6 +88,44 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
         self.comboBox.addItems(["English","Français","Deutsch","Suomi","Español","中文","Èdè Yorùbá"])
+        self.comboBox.currentIndexChanged.connect(self.setLocal)
+        self.numOfElements = self.comboBox.count()
+
+
+    def setLocal(self,Form):
+        local = ['en','fr','de','fi','es','ch','yo']
+        for i in range(0,7):
+            if self.comboBox.currentIndex() == i:
+                lng = local[i]
+                break
+            else:
+
+                lng = 'en'
+
+        # if self.comboBox.currentIndex() == 1:
+        #     print(self.comboBox.currentText())
+        #     lng = 'fr'
+        #
+        # elif self.comboBox.currentIndex() == 2:
+        #     print(self.comboBox.currentText())
+        #     lng = 'de'
+        # else:
+        #
+        #     lng = 'en'
+
+        langtouse = gettext.translation(lng, localedir='locale', languages=[lng])
+        langtouse.install()
+        self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
+        self.pushButton.setText(_translate("Form", _('Complete Year'), None))
+
+
+
+
+
+
+    def selectionchange(self,Form):
+        print ("Selection changed: ", self.comboBox.currentText())
+        print ("Current Index", self.comboBox.currentIndex())
 
 
 if __name__ == "__main__":
