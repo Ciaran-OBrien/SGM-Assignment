@@ -10,7 +10,6 @@ from PyQt4 import QtCore, QtGui
 from functools import partial
 import gettext
 
-
 # Declaring the font type that will be used
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -25,11 +24,15 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 class Ui_Erasmus(QtGui.QWidget):
-    def __init__(self,parent = None):
+    def __init__(self,lng,parent = None):
         super(Ui_Erasmus, self).__init__(parent)
-        self.setupUi(self)
-    def setupUi(self, Erasmus):
+        self.lng = lng
+        self.setupUi(self,lng)
+
+
+    def setupUi(self, Erasmus,lng):
         # Setting up the secondary Ui
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1458,1000)
@@ -73,7 +76,7 @@ class Ui_Erasmus(QtGui.QWidget):
     # Setting up the buttons as part of the secondary Ui
     def createBtns(self,Erasmus):
         self.countries=[] #Create empty list
-        afile=open('countries.txt','r') #Open file for reading
+        afile=open('locale/' + self.lng + '/countries.txt','r',encoding="utf8") #Open file for reading and with correct character encoding
         for line in afile: #iterate through file and add each item to the list
              self.countries.append(str(line).rstrip('\n'))
         afile.close()
@@ -82,7 +85,7 @@ class Ui_Erasmus(QtGui.QWidget):
         self.btns[0] = QtGui.QPushButton(self.scrollAreaWidgetContents)
         self.btns[0].setObjectName(_fromUtf8("exit"))
         self.verticalLayout.addWidget(self.btns[0])
-        self.btns[0].setText("Exit") # translation needed
+        self.btns[0].setText(_translate("Form", _('Exit'), None))
         self.btns[0].clicked.connect(self.closeIt)
         for country in self.countries:
             self.btns[i] = QtGui.QPushButton(self.scrollAreaWidgetContents)
@@ -100,7 +103,6 @@ class Ui_Erasmus(QtGui.QWidget):
         i=0
         for row in range(0,5):
             for col in range(0,2):
-                print("Row: ", row ,"Col: ", col)
                 self.textBrowser[i] = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
                 self.textBrowser[i].setObjectName(_fromUtf8("textBrowser"))
                 self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
@@ -123,12 +125,11 @@ class Ui_Erasmus(QtGui.QWidget):
 
     # Populating all the relevant lists
     def loadFile(self,btn,Erasmus):
-        print(btn)
-        self.countries=[] #Create empty list
-        afile=open('countries.txt','r') #Open file for reading
-        for line in afile: #iterate through file and add each item to the list
-            self. countries.append(str(line).rstrip('\n'))
-        afile.close()
+        # self.countries=[] #Create empty list
+        # afile=open('countries.txt','r') #Open file for reading
+        # for line in afile: #iterate through file and add each item to the list
+        #     self. countries.append(str(line).rstrip('\n'))
+        # afile.close()
 
         self.university=[]
         afile=open(btn + '/university.txt','r')
@@ -206,7 +207,7 @@ class Ui_Open(QtGui.QWidget):
 
     # Launching the second window
     def on_pushButton_clicked(self):
-        dialog = Ui_Erasmus(self)
+        dialog = Ui_Erasmus(self.lng)
         dialog.show()
 
     # Adding titles where neccessary
@@ -220,17 +221,18 @@ class Ui_Open(QtGui.QWidget):
 
 
     def setLocal(self,Form):
-        local = ['en','fr','de','fi','es','ch','yo']
+        local = ['en','fr','de','fi','es','zh','yo']
         # Checking with local has been selected from combobox
         for i in range(0,7):
             if self.comboBox.currentIndex() == i:
-                lng = local[i]
+                self.lng = local[i]
                 break
             else:
                 # Default local is set to en. Will change to work with persistant data
-                lng = 'en'
-        langtouse = gettext.translation(lng, localedir='locale', languages=[lng])
+                self.lng = 'en'
+        langtouse = gettext.translation(self.lng, localedir='locale', languages=[self.lng])
         langtouse.install()
+        print("We're set to", self.lng)
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
 

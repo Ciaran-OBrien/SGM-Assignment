@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-04-17 19:11+0100\n"
-"PO-Revision-Date: 2017-04-17 19:13+0100\n"
+"POT-Creation-Date: 2017-04-18 22:24+0100\n"
+"PO-Revision-Date: 2017-04-18 22:25+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,10 +17,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: yo\n"
 
-#: open.py:86
+#: open.py:88
+msgid "Exit"
+msgstr "Jade"
+
+#: open.py:216 open.py:236
 msgid "Single Semester"
 msgstr "mẹrin oṣù "
 
-#: open.py:87
+#: open.py:217 open.py:237
 msgid "Complete Year"
 msgstr "mẹjọ oṣù "
