@@ -69,7 +69,7 @@ class Ui_Erasmus(QtGui.QWidget):
         # Calling all the secondary funtions
         self.createBtns(Erasmus)
         self.createTextBrowser(Erasmus)
-        self.loadFile("Austria",Erasmus)
+        self.loadFile(1,Erasmus)
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
@@ -92,7 +92,7 @@ class Ui_Erasmus(QtGui.QWidget):
             self.btns[i].setObjectName(_fromUtf8(country))
             self.verticalLayout.addWidget(self.btns[i])
             self.btns[i].setText(_translate("Erasmus", country, None))
-            self.btns[i].clicked.connect(partial(self.loadFile,self.btns[i].text(),Erasmus))
+            self.btns[i].clicked.connect(partial(self.loadFile,i,Erasmus))
             i += 1
 
     # Setting up the text browsers as part of the secondary Ui
@@ -124,15 +124,17 @@ class Ui_Erasmus(QtGui.QWidget):
                 i +=1
 
     # Populating all the relevant lists
-    def loadFile(self,btn,Erasmus):
+    def loadFile(self,count,Erasmus):
         # self.countries=[] #Create empty list
         # afile=open('countries.txt','r') #Open file for reading
         # for line in afile: #iterate through file and add each item to the list
         #     self. countries.append(str(line).rstrip('\n'))
         # afile.close()
+        print(count)
+        countryList = ['Austria','Belgium','Czech','Denmark','Finland','Germany','Italy','Netherland','Norway','SKorea']
 
         self.university=[]
-        afile=open(btn + '/university.txt','r')
+        afile=open(countryList[count-1] + '/university.txt','r')
         for line in afile: #iterate through file and add each item to the list
              self.university.append(str(line).rstrip('\n'))
         afile.close()
