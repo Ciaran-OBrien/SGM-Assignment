@@ -11,7 +11,7 @@ from functools import partial
 import gettext
 
 
-
+# Declaring the font type that will be used
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -30,7 +30,7 @@ class Ui_Erasmus(QtGui.QWidget):
         super(Ui_Erasmus, self).__init__(parent)
         self.setupUi(self)
     def setupUi(self, Erasmus):
-
+        # Setting up the secondary Ui
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1458,1000)
         self.horizontalLayout = QtGui.QHBoxLayout(Erasmus)
@@ -63,13 +63,14 @@ class Ui_Erasmus(QtGui.QWidget):
         self.gridLayout_3.addLayout(self.gridLayout, 0, 0, 1, 1)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout.addWidget(self.scrollArea_2)
-
+        # Calling all the secondary funtions
         self.createBtns(Erasmus)
         self.createTextBrowser(Erasmus)
         self.loadFile("Austria",Erasmus)
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
+    # Setting up the buttons as part of the secondary Ui
     def createBtns(self,Erasmus):
         self.countries=[] #Create empty list
         afile=open('countries.txt','r') #Open file for reading
@@ -86,6 +87,7 @@ class Ui_Erasmus(QtGui.QWidget):
             self.btns[i].clicked.connect(partial(self.loadFile,self.btns[i].text(),Erasmus))
             i += 1
 
+    # Setting up the text browsers as part of the secondary Ui
     def createTextBrowser(self,Erasmus):
 
 
@@ -99,7 +101,7 @@ class Ui_Erasmus(QtGui.QWidget):
                 self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
                 i +=1
 
-
+    # Populating the text browsers
     def retranslateUi(self, Erasmus):
 
         Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
@@ -113,6 +115,8 @@ class Ui_Erasmus(QtGui.QWidget):
                 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[i] + "</span></p>\n"
                 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
                 i +=1
+
+    # Populating all the relevant lists
     def loadFile(self,btn,Erasmus):
         print(btn)
         self.countries=[] #Create empty list
@@ -133,6 +137,7 @@ class Ui_Open(QtGui.QWidget):
         super(Ui_Open, self).__init__(parent)
         self.setupUi(self)
     def setupUi(self, Form):
+        # Setting up the UI
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(1458, 1000)
         Form.setMaximumSize(QtCore.QSize(1458, 1000))
@@ -181,19 +186,22 @@ class Ui_Open(QtGui.QWidget):
         spacerItem4 = QtGui.QSpacerItem(20, 100, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         self.gridLayout_2.addItem(spacerItem4, 0, 1, 1, 1)
 
+        # Calling all the secondary funtions
         self.setLocal(Form)
         self.retranslateUi(Form)
         self.comboBox.setCurrentIndex(0)
         # self.pushButton_2.clicked.connect(partial(self.on_pushButton_clicked))
         # self.pushButton.clicked.connect(partial(self.on_pushButton_clicked))
+        # Full year button. With a connected function
         self.pushButton.clicked.connect(self.on_pushButton_clicked)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-
+    # Launching the second window
     def on_pushButton_clicked(self):
         dialog = Ui_Erasmus(self)
         dialog.show()
 
+    # Adding titles where neccessary
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
@@ -205,38 +213,19 @@ class Ui_Open(QtGui.QWidget):
 
     def setLocal(self,Form):
         local = ['en','fr','de','fi','es','ch','yo']
+        # Checking with local has been selected from combobox
         for i in range(0,7):
             if self.comboBox.currentIndex() == i:
                 lng = local[i]
                 break
             else:
-
+                # Default local is set to en. Will change to work with persistant data
                 lng = 'en'
-
-        # if self.comboBox.currentIndex() == 1:
-        #     print(self.comboBox.currentText())
-        #     lng = 'fr'
-        #
-        # elif self.comboBox.currentIndex() == 2:
-        #     print(self.comboBox.currentText())
-        #     lng = 'de'
-        # else:
-        #
-        #     lng = 'en'
-
         langtouse = gettext.translation(lng, localedir='locale', languages=[lng])
         langtouse.install()
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
 
-
-
-
-
-
-    def selectionchange(self,Form):
-        print ("Selection changed: ", self.comboBox.currentText())
-        print ("Current Index", self.comboBox.currentIndex())
 
 
 
