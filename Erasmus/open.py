@@ -79,6 +79,11 @@ class Ui_Erasmus(QtGui.QWidget):
         afile.close()
         self.btns = {}
         i=1;
+        self.btns[0] = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        self.btns[0].setObjectName(_fromUtf8("exit"))
+        self.verticalLayout.addWidget(self.btns[0])
+        self.btns[0].setText("Exit") # translation needed
+        self.btns[0].clicked.connect(self.closeIt)
         for country in self.countries:
             self.btns[i] = QtGui.QPushButton(self.scrollAreaWidgetContents)
             self.btns[i].setObjectName(_fromUtf8(country))
@@ -131,6 +136,9 @@ class Ui_Erasmus(QtGui.QWidget):
              self.university.append(str(line).rstrip('\n'))
         afile.close()
         self.retranslateUi(Erasmus)
+
+    def closeIt(self):
+        self.close()
 
 class Ui_Open(QtGui.QWidget):
     def __init__(self,parent = None):
