@@ -41,6 +41,7 @@ class Ui_Erasmus(QtGui.QWidget):
         self.scrollArea = QtGui.QScrollArea(Erasmus)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
+        self.scrollArea.setMaximumSize(QtCore.QSize(400,16777215))
         self.scrollAreaWidgetContents = QtGui.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 623, 782))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
@@ -95,32 +96,59 @@ class Ui_Erasmus(QtGui.QWidget):
             self.btns[i].clicked.connect(partial(self.loadFile,i,Erasmus))
             i += 1
 
+
+
     # Setting up the text browsers as part of the secondary Ui
     def createTextBrowser(self,Erasmus):
 
-
         self.textBrowser = {}
         i=0
-        for row in range(0,5):
+        for row in range(0,6):
             for col in range(0,2):
-                self.textBrowser[i] = QtGui.QTextBrowser(self.scrollAreaWidgetContents_2)
-                self.textBrowser[i].setObjectName(_fromUtf8("textBrowser"))
+                self.textBrowser[i] = QtGui.QLabel(self.scrollAreaWidgetContents_2)
+                self.textBrowser[i].setMinimumSize(QtCore.QSize(250,100))
+                self.textBrowser[i].setAlignment(QtCore.Qt.AlignCenter)
+                self.textBrowser[i].setObjectName("textBrowser" + str(i))
+                self.textBrowser[i].setFrameShape(QtGui.QFrame.WinPanel)
                 self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
+
                 i +=1
 
+
+
+    def showText1(self):
+        print ("Label 1 clicked")
     # Populating the text browsers
     def retranslateUi(self, Erasmus):
 
         Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
+
+        self.textBrowser[0].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[1].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[2].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[3].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[4].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[5].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[6].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[7].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[8].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[9].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+
         i=0
-        for row in range(0,5):
+        for row in range(0,6):
             for col in range(0,2):
-                self.textBrowser[i].setHtml(_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                "p, li { white-space: pre-wrap; }\n"
-                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[i] + "</span></p>\n"
-                "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+                self.textBrowser[i].setText(_translate("Erasmus",self.university[i],None))
+
+                #self.textBrowser[i].setHtml(_translate("Erasmus", '''<html><body><a href="some_special_identifier://a_function">'''+ self.university[i] +'''</a><br/></body></html''', None))
+
+                # <a href="some_special_identifier://a_function">
+                # (_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                # "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                # "p, li { white-space: pre-wrap; }\n"
+                # "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                # "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[i] + "</span></p>\n"
+                # "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+
                 i +=1
 
     # Populating all the relevant lists
@@ -131,14 +159,31 @@ class Ui_Erasmus(QtGui.QWidget):
         #     self. countries.append(str(line).rstrip('\n'))
         # afile.close()
         print(count)
-        countryList = ['Austria','Belgium','Czech','Denmark','Finland','Germany','Italy','Netherland','Norway','SKorea']
+        self.info=[]
+        afile=open("info.txt",'r')
+        for line in afile:
+            self.info.append(str(line).rstrip('\n'))
+        afile.close()
+
+        countryList = ['Austria','Belgium','China','Czech','Denmark','Finland','Germany','Italy','Netherland','Norway','SKorea']
 
         self.university=[]
-        afile=open(countryList[count-1] + '/university.txt','r')
+        afile=open('University/' + countryList[count-1] + '/eng.txt','r')
         for line in afile: #iterate through file and add each item to the list
              self.university.append(str(line).rstrip('\n'))
         afile.close()
         self.retranslateUi(Erasmus)
+
+
+    def secondView(self,Erasmus):
+         i=0
+         for uni in self.university:
+             self.btns[i+1].setText(_translate("Erasmus", uni, None))
+             i+=1
+         j=0
+         for info in self.info:
+             self.textBrowser[j].setText(_translate("Erasmus",info,None))
+             j+=1
 
     def closeIt(self):
         self.close()
