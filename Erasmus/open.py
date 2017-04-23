@@ -36,6 +36,7 @@ class Ui_Erasmus(QtGui.QWidget):
         # Setting up the secondary Ui
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1458,1000)
+        self.loadCSS(self)
         self.horizontalLayout = QtGui.QHBoxLayout(Erasmus)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.scrollArea = QtGui.QScrollArea(Erasmus)
@@ -73,6 +74,18 @@ class Ui_Erasmus(QtGui.QWidget):
         self.loadFile(1,Erasmus)
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
+
+    # Loading the relavent css files
+    def loadCSS(self,Erasmus):
+
+        self.styledata=' '
+        if self.lng == 'en':
+            file=open('css/open/warm.css','r')
+        elif self.lng == 'zh':
+            file=open('css/open/warmEast.css','r')
+        self.styledata=file.read()
+        file.close()
+        self.setStyleSheet(self.styledata)
 
     # Setting up the buttons as part of the secondary Ui
     def createBtns(self,Erasmus):

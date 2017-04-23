@@ -11,7 +11,6 @@ QPushButton{
   margin: 0 auto;
   padding: 0;
   height: 70px;
-
   border-width: 2.5px;
   border-color: #b38f00;
   border-style: solid;
@@ -28,6 +27,27 @@ QPushButton:hover{
 }
 
 QPushButton:focus{
+  outline: none;
+}
+
+QLabel{
+  margin: 0 auto;
+  padding: 0;
+  height: 70px;
+  border-width: 2.5px;
+  border-color: #b38f00;
+  border-style: solid;
+  background: transparent;
+  color: #b38f00;
+  font-size: 28px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+QLabel:hover{
+  background-color: #b38f00;
+  color: #fff;
+}
+QLabel:focus{
   outline: none;
 }
 
