@@ -29,10 +29,10 @@ class Ui_Erasmus(QtGui.QWidget):
     def __init__(self,lng,parent = None):
         super(Ui_Erasmus, self).__init__(parent)
         self.lng = lng
-        self.setupUi(self,lng)
+        self.setupUi(self)
 
 
-    def setupUi(self, Erasmus,lng):
+    def setupUi(self, Erasmus):
         # Setting up the secondary Ui
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1458,1000)
@@ -41,7 +41,7 @@ class Ui_Erasmus(QtGui.QWidget):
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.scrollArea = QtGui.QScrollArea(Erasmus)
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
+        self.scrollArea.setObjectName(_fromUtf8("lngScrollArea"))
         self.scrollArea.setMaximumSize(QtCore.QSize(400,16777215))
         self.scrollAreaWidgetContents = QtGui.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 623, 782))
@@ -79,7 +79,8 @@ class Ui_Erasmus(QtGui.QWidget):
     def loadCSS(self,Erasmus):
 
         self.styledata=' '
-        if self.lng == 'en':
+        if self.lng == 'en' or 'fr':
+            print("warm css")
             file=open('css/open/warm.css','r')
         elif self.lng == 'zh':
             file=open('css/open/warmEast.css','r')
@@ -271,7 +272,7 @@ class Ui_Open(QtGui.QWidget):
     def loadCSS(self,Form,locale):
 
         self.styledata=' '
-        if locale == 'en':
+        if locale == 'en' or 'fr':
             file=open('css/open/warm.css','r')
         elif locale == 'zh':
             file=open('css/open/warmEast.css','r')
