@@ -197,6 +197,11 @@ class Ui_Open(QtGui.QWidget):
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(1458, 1000)
         Form.setMaximumSize(QtCore.QSize(1458, 1000))
+        self.styledata=' '
+        file=open('css/style.css','r')
+        self.styledata=file.read()
+        file.close()
+        Form.setStyleSheet(self.styledata)
         self.gridLayout_2 = QtGui.QGridLayout(Form)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.pushButton_2 = QtGui.QPushButton(Form)
