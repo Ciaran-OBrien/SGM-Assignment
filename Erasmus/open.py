@@ -198,7 +198,7 @@ class Ui_Open(QtGui.QWidget):
         Form.resize(1458, 1000)
         Form.setMaximumSize(QtCore.QSize(1458, 1000))
         self.styledata=' '
-        file=open('css/style.css','r')
+        file=open('css/open/warm.css','r')
         self.styledata=file.read()
         file.close()
         self.setStyleSheet(self.styledata)
@@ -225,7 +225,7 @@ class Ui_Open(QtGui.QWidget):
         self.comboBox.setMaximumSize(QtCore.QSize(0, 16777215))
         self.comboBox.setEditable(False)
         self.comboBox.setMaxVisibleItems(5)
-        self.comboBox.setObjectName(_fromUtf8("comboBox"))
+        self.comboBox.setObjectName(_fromUtf8("lngSelection"))
         self.gridLayout_2.addWidget(self.comboBox, 1, 1, 1, 1, QtCore.Qt.AlignRight)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.MinimumExpanding)
         self.gridLayout_2.addItem(spacerItem, 2, 1, 1, 1)
