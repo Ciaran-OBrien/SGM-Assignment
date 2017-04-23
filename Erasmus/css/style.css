@@ -1,0 +1,27 @@
+QWidget#Form
+{
+    background: white; /*qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 #F5F5DC, stop:1 	#DEB887);*/
+}
+
+QPushButton{
+  margin: 0 auto;
+  padding: 0;
+  height: 70px;
+
+  border-width: 2.5px;
+  border-color: #1ECD97;
+  border-style: solid;
+  background: transparent;
+  color: #1ECD97;/*#1ECD97;*/
+  font-size: 28px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+QPushButton:hover{
+  background-color: #1ECD97;
+  color: #fff;
+}
+
+QPushButton:focus{
+  outline: none;
+}
