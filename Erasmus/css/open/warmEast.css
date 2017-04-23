@@ -29,6 +29,19 @@ QPushButton:hover{
 QPushButton:focus{
   outline: none;
 }
+QPushButton#exit{
+  border-width: 2.5px;
+  border-style: solid;
+  background: transparent;
+  border-color: red;
+  color: black;
+}
+QPushButton#exit:hover{
+  background-color: #ff4d4d;
+  border-color: red;
+
+  color: #fff;
+}
 QLabel{
   margin: 0 auto;
   padding: 0;
