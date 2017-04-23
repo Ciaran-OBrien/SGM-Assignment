@@ -122,7 +122,7 @@ class Ui_Erasmus(QtGui.QWidget):
     def retranslateUi(self, Erasmus):
 
         Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
-
+        Erasmus.setWindowIcon(QtGui.QIcon( "images/student.png"))
         self.textBrowser[0].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[1].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[2].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
@@ -197,11 +197,8 @@ class Ui_Open(QtGui.QWidget):
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(1458, 1000)
         Form.setMaximumSize(QtCore.QSize(1458, 1000))
-        self.styledata=' '
-        file=open('css/open/warm.css','r')
-        self.styledata=file.read()
-        file.close()
-        self.setStyleSheet(self.styledata)
+        Form.setWindowIcon(QtGui.QIcon('image/world.png'))
+        self.loadCSS(Form,'en')
         self.gridLayout_2 = QtGui.QGridLayout(Form)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.pushButton_2 = QtGui.QPushButton(Form)
@@ -257,6 +254,17 @@ class Ui_Open(QtGui.QWidget):
         self.pushButton.clicked.connect(self.on_pushButton_clicked)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
+    # Loading the relavent css files
+    def loadCSS(self,Form,locale):
+
+        self.styledata=' '
+        if locale == 'en':
+            file=open('css/open/warm.css','r')
+        elif locale == 'zh':
+            file=open('css/open/warmEast.css','r')
+        self.styledata=file.read()
+        file.close()
+        self.setStyleSheet(self.styledata)
     # Launching the second window
     def on_pushButton_clicked(self):
         dialog = Ui_Erasmus(self.lng)
@@ -264,7 +272,8 @@ class Ui_Open(QtGui.QWidget):
 
     # Adding titles where neccessary
     def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
+        Form.setWindowTitle(_translate("Form", "Erasmus", None))
+        Form.setWindowIcon(QtGui.QIcon( "images/student.png"))
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
         self.comboBox.addItems(["English","Français","Deutsch","Suomi","Español","中文","Èdè Yorùbá"])
@@ -285,6 +294,7 @@ class Ui_Open(QtGui.QWidget):
         langtouse = gettext.translation(self.lng, localedir='locale', languages=[self.lng])
         langtouse.install()
         print("We're set to", self.lng)
+        self.loadCSS(Form,self.lng)
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
 

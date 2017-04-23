@@ -1,6 +1,7 @@
 /*
 This style sheet for the opening interface, focuses on courage/joy/warmth through yellow tones #b38f00
 */
+
 QWidget#Form
 {
     background: white;
@@ -38,8 +39,8 @@ QComboBox {
     border-width: 5px;
     padding: 1px 18px 1px 3px;
     min-width: 5em;
-    font-size: 45px;
-    font-family: Verdana, Geneva, sans-serif;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
 
 }
 

@@ -1,5 +1,5 @@
 /*
-This style sheet for the opening interface, focuses on courage/joy/warmth through yellow tones #b38f00
+This style sheet for the opening interface, focuses on courage/joy/warmth through purple tones #b38f00
 */
 QWidget#Form
 {
@@ -12,17 +12,17 @@ QPushButton{
   height: 70px;
 
   border-width: 2.5px;
-  border-color: #b38f00;
+  border-color: #990078;
   border-style: solid;
   background: transparent;
-  color: #b38f00;
+  color: #990078;
   font-size: 28px;
   font-family: 'Montserrat', sans-serif;
 
 }
 
 QPushButton:hover{
-  background-color: #b38f00;
+  background-color: #990078;
   color: #fff;
 }
 
@@ -34,12 +34,12 @@ QComboBox {
     color: black;
     border: 1px solid gray;
     border-radius: 3px;
-    border-color: #b38f00;
+    border-color: #990078;
     border-width: 5px;
     padding: 1px 18px 1px 3px;
     min-width: 5em;
-    font-size: 45px;
-    font-family: Verdana, Geneva, sans-serif;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
 
 }
 
@@ -47,5 +47,5 @@ QComboBox {
 QComboBox QAbstractItemView{
   selection-color: black;
   border-color: #b38f00;
-  selection-background-color: #b38f00;
+  selection-background-color:#990078;
 }
