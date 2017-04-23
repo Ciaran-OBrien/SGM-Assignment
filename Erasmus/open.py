@@ -7,8 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtCore import QSettings
 from functools import partial
 import gettext
+
+settings = QSettings("SGM_Assignment","Erasmus_Portal")
 
 # Declaring the font type that will be used
 try:
@@ -36,6 +39,7 @@ class Ui_Erasmus(QtGui.QWidget):
         # Setting up the secondary Ui
         Erasmus.setObjectName(_fromUtf8("Erasmus"))
         Erasmus.resize(1858,1000)
+        Erasmus.setMaximumSize(QtCore.QSize(1858, 1000))
         self.loadCSS(self)
         self.horizontalLayout = QtGui.QHBoxLayout(Erasmus)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -81,7 +85,6 @@ class Ui_Erasmus(QtGui.QWidget):
 
         self.styledata=' '
         if self.lng == 'en' or 'fr':
-            print("warm css")
             file=open('css/open/warm.css','r')
         elif self.lng == 'zh':
             file=open('css/open/warmEast.css','r')
@@ -129,11 +132,6 @@ class Ui_Erasmus(QtGui.QWidget):
                 self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
 
                 i +=1
-
-
-
-    def showText1(self):
-        print ("Label 1 clicked")
     # Populating the text browsers
     def retranslateUi(self, Erasmus):
 
@@ -215,6 +213,7 @@ class Ui_Open(QtGui.QWidget):
         Form.setMaximumSize(QtCore.QSize(1858, 1000))
         Form.setWindowIcon(QtGui.QIcon('image/world.png'))
         self.loadCSS(Form,'en')
+
         self.gridLayout_2 = QtGui.QGridLayout(Form)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.pushButton_2 = QtGui.QPushButton(Form)
@@ -262,13 +261,29 @@ class Ui_Open(QtGui.QWidget):
 
         # Calling all the secondary funtions
         self.setLocal(Form)
+        self.settings(Form)
         self.retranslateUi(Form)
-        self.comboBox.setCurrentIndex(0)
         # self.pushButton_2.clicked.connect(partial(self.on_pushButton_clicked))
         # self.pushButton.clicked.connect(partial(self.on_pushButton_clicked))
         # Full year button. With a connected function
         self.pushButton.clicked.connect(self.on_pushButton_clicked)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
+    # persistant data
+    def settings(self,Form):
+        languageValue = settings.value('language',type=str)
+        comboIndex = settings.value('comboBoxIndex',type=int)
+        if self.lng is "":
+            #print("lng not set yet, setting now")
+            #print(comboIndex)
+            self.lng = languageValue
+            self.comboBoxIndex = comboIndex
+
+        settings.setValue('language', self.lng)
+        settings.setValue('comboBoxIndex',self.comboBoxIndex)
+
+
+
 
     # Loading the relavent css files
     def loadCSS(self,Form,locale):
@@ -288,29 +303,33 @@ class Ui_Open(QtGui.QWidget):
 
     # Adding titles where neccessary
     def retranslateUi(self, Form):
+
         Form.setWindowTitle(_translate("Form", "Erasmus", None))
         Form.setWindowIcon(QtGui.QIcon( "images/student.png"))
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
         self.comboBox.addItems(["English","Français","Deutsch","Suomi","Español","中文","Èdè Yorùbá"])
+        self.comboBox.setCurrentIndex(self.comboBoxIndex)
         self.comboBox.currentIndexChanged.connect(self.setLocal)
         self.numOfElements = self.comboBox.count()
-
 
     def setLocal(self,Form):
         local = ['en','fr','de','fi','es','zh','yo']
         # Checking with local has been selected from combobox
         for i in range(0,7):
             if self.comboBox.currentIndex() == i:
+                self.comboBoxIndex = i
                 self.lng = local[i]
                 break
             else:
                 # Default local is set to en. Will change to work with persistant data
-                self.lng = 'en'
+                self.lng = ''
+                self.settings(Form)
+
         langtouse = gettext.translation(self.lng, localedir='locale', languages=[self.lng])
         langtouse.install()
-        print("We're set to", self.lng)
         self.loadCSS(Form,self.lng)
+        self.settings(Form)
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
 
