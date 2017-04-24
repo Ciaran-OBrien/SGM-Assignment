@@ -82,11 +82,13 @@ class Ui_Erasmus(QtGui.QWidget):
 
     # Loading the relavent css files
     def loadCSS(self,Erasmus):
-
+        local = ['en','fr','de','fi','es','yo']
         self.styledata=' '
-        if self.lng == 'en' or 'fr':
+        if self.lng in local:
+            print("warm CSS")
             file=open('css/open/warm.css','r')
         elif self.lng == 'zh':
+            print("warmEast css")
             file=open('css/open/warmEast.css','r')
         self.styledata=file.read()
         file.close()
@@ -287,11 +289,13 @@ class Ui_Open(QtGui.QWidget):
 
     # Loading the relavent css files
     def loadCSS(self,Form,locale):
-
+        local = ['en','fr','de','fi','es','yo']
         self.styledata=' '
-        if locale == 'en' or 'fr':
+        if locale in local:
+            print("Open form warm CSS")
             file=open('css/open/warm.css','r')
         elif locale == 'zh':
+            print("Open form warmEast CSS")
             file=open('css/open/warmEast.css','r')
         self.styledata=file.read()
         file.close()
