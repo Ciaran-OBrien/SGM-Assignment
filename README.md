@@ -114,10 +114,39 @@ def createBtns(self,Erasmus):
 
 ## C13n
 
-PDI - Power Distance Index 
+### PDI - Power Distance Index 
 
-![Alt Text](http://i.imgur.com/Efst2Wx.png)
+"Extent to which less powerful members of institutions and organizations accept that power is distributed unequally
+" 
 
-UAI - Uncertainty Avoidance
+**High power distance countries** (autocratic)
+People more likely to simply obey the orders of their superiors without discussion, centralized and tall organization structures
 
-![Alt Text](http://i.imgur.com/sSI9hOY.png)
+**Low power distance countries** (democratic)
+Flatter and decentralized organization structures, smaller ratio of supervisors
+*Geert Hofstede*
+
+![](http://i.imgur.com/v4KG0j6.png)
+
+What I’ve taken from Hofstede’s research above, with regards to Power Distance Index, is that we see a striking resemblance, or opposites depending on how you look at it, to my previous insight of Uncertainty Avoidance.
+On first glance, there’s a shock to see Germany so low. Why do people accept that there is power inequality that the power lies with the majority, the favoured few. But in reality, the index does show us the countries that are more than happy to accept that the police have a certain ruling, and are able/allowed to invoke this authority.
+What does this mean for UI design? Well gaining trust for low scoring countries is of high importance. This is done with the simple and similar UI layout. The repetitiveness allows for recognising, rather than recall.
+
+### UAI - Uncertainty Avoidance
+
+"Extent to which people feel threatened by ambiguous situations and have created beliefs and institutions that try to avoid such situations"
+
+**High uncertainty avoidance countries**
+People have high need for security, strong belief in experts and their knowledge, structured organizational activities, more written rules, less risk taking by managers
+
+***Low uncertainty avoidance countries**
+People are more willing to  accept risks associated with the unknown, less structured organizational activities, fewer written rules, more risk taking by managers, higher employee turnover, more ambitious employees
+*Geert Hofstede*
+
+![](http://i.imgur.com/VqUT9qc.png)
+
+What I’ve taken from Hostede’s research above, with regards to Uncertainty Avoidance, is that there may be a few anomalies with the results seen above. Most notably the two countries scoring lower on the index. We, as Westerns, see China as being a very strict and power orientated. I discuss this below in PDI, but here, we see China scoring the lowest. 
+
+But upon further research, we can see that China fall correctly into this position. Why? China are renowned for their for-planning, their ability to plan ahead, and always having a long term plan. This is how I see Hofstede’s Dimension scoring China so low.
+As for designing for the opposite end, high Uncertainty Avoidance, the need to be able to balance different options against each other is necessary in order to make a reliable decision. I achieved this through the side to side layout between the Country selection and College options. This familiar design follows throughout the whole app.
+
