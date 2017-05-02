@@ -116,12 +116,8 @@ def createBtns(self,Erasmus):
 
 PDI - Power Distance Index 
 
-![Alt Text](http://i.imgur.com/iZhFp6L.png)
+![Alt Text](http://i.imgur.com/Efst2Wx.png)
 
 UAI - Uncertainty Avoidance
 
-
-
-
-
-![Alt Text](http://i.imgur.com/oFDG055.png)
+![Alt Text](http://i.imgur.com/sSI9hOY.png)
