@@ -83,7 +83,7 @@ def setLocal(self,Form):
 
 ## L10n - Languages
 
-I simply used text files to load the college in a specific language, based on the locale set from the fron page.
+I simply used text files to load the college in a specific language, based on the locale set from the front page.
 These were stored in a text file, 'countries.txt', within each local folder, see above.
 
 See below of how they were loaded, as well as a look as to how each of the button are created and object values set.
