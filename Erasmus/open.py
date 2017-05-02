@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'openWindowsuiComboBoxLng.ui'
@@ -28,10 +29,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Erasmus(QtGui.QWidget):
-    def __init__(self,lng,parent = None):
+class Ui_Erasmus(QtGui.QDialog):
+    def __init__(self,lng,btnIndex,parent = None):
         super(Ui_Erasmus, self).__init__(parent)
         self.lng = lng
+        self.btnIndex = btnIndex
         self.setupUi(self)
 
 
@@ -77,6 +79,7 @@ class Ui_Erasmus(QtGui.QWidget):
         self.createBtns(Erasmus)
         self.createTextBrowser(Erasmus)
         self.loadFile(1,Erasmus)
+        self.index = 1
 
         QtCore.QMetaObject.connectSlotsByName(Erasmus)
 
@@ -134,14 +137,11 @@ class Ui_Erasmus(QtGui.QWidget):
                 self.gridLayout.addWidget(self.textBrowser[i], row, col, 1, 1)
 
                 i +=1
-    # Populating the text browsers
-    def retranslateUi(self, Erasmus):
 
-        Erasmus.setWindowTitle(_translate("Erasmus", "Erasmus", None))
-        Erasmus.setWindowIcon(QtGui.QIcon( "images/student.png"))
+    def setTextConnect(self,Erasmus):
         self.textBrowser[0].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
-        self.textBrowser[1].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[2].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+        self.textBrowser[1].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[3].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[4].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[5].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
@@ -149,32 +149,21 @@ class Ui_Erasmus(QtGui.QWidget):
         self.textBrowser[7].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[8].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
         self.textBrowser[9].mouseReleaseEvent=lambda event:self.secondView(Erasmus)
+    # Populating the text browsers
+    def retranslateUi(self, Erasmus):
 
+        Erasmus.setWindowTitle(_translate("Erasmus", "Student Study Portal", None))
+        Erasmus.setWindowIcon(QtGui.QIcon( "images/student.png"))
+        self.setTextConnect(Erasmus)
         i=0
         for row in range(0,6):
             for col in range(0,2):
                 self.textBrowser[i].setText(_translate("Erasmus",self.university[i],None))
-
-                #self.textBrowser[i].setHtml(_translate("Erasmus", '''<html><body><a href="some_special_identifier://a_function">'''+ self.university[i] +'''</a><br/></body></html''', None))
-
-                # <a href="some_special_identifier://a_function">
-                # (_translate("Erasmus", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                # "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                # "p, li { white-space: pre-wrap; }\n"
-                # "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                # "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">" + self.university[i] + "</span></p>\n"
-                # "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
-
                 i +=1
 
     # Populating all the relevant lists
     def loadFile(self,count,Erasmus):
-        # self.countries=[] #Create empty list
-        # afile=open('countries.txt','r') #Open file for reading
-        # for line in afile: #iterate through file and add each item to the list
-        #     self. countries.append(str(line).rstrip('\n'))
-        # afile.close()
-        print(count)
+        print("Printing count",count)
         self.info=[]
         afile=open("info.txt",'r')
         for line in afile:
@@ -192,6 +181,7 @@ class Ui_Erasmus(QtGui.QWidget):
 
 
     def secondView(self,Erasmus):
+
          i=0
          for uni in self.university:
              self.btns[i+1].setText(_translate("Erasmus", uni, None))
@@ -200,6 +190,8 @@ class Ui_Erasmus(QtGui.QWidget):
          for info in self.info:
              self.textBrowser[j].setText(_translate("Erasmus",info,None))
              j+=1
+         self.index+=1
+
 
     def closeIt(self):
         self.close()
@@ -265,10 +257,7 @@ class Ui_Open(QtGui.QWidget):
         self.setLocal(Form)
         self.settings(Form)
         self.retranslateUi(Form)
-        # self.pushButton_2.clicked.connect(partial(self.on_pushButton_clicked))
-        # self.pushButton.clicked.connect(partial(self.on_pushButton_clicked))
-        # Full year button. With a connected function
-        self.pushButton.clicked.connect(self.on_pushButton_clicked)
+        self.pushButton_2.clicked.connect(partial(self.on_pushButton_clicked,Form,2))
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     # persistant data
@@ -301,14 +290,15 @@ class Ui_Open(QtGui.QWidget):
         file.close()
         self.setStyleSheet(self.styledata)
     # Launching the second window
-    def on_pushButton_clicked(self):
-        dialog = Ui_Erasmus(self.lng)
+    def on_pushButton_clicked(self,Form,btnIndex):
+        dialog = Ui_Erasmus(self.lng,btnIndex)
         dialog.show()
+
 
     # Adding titles where neccessary
     def retranslateUi(self, Form):
 
-        Form.setWindowTitle(_translate("Form", "Erasmus", None))
+        Form.setWindowTitle(_translate("Form", "Student Study Portal", None))
         Form.setWindowIcon(QtGui.QIcon( "images/student.png"))
         self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
         self.pushButton.setText(_translate("Form", _('Complete Year'), None))
@@ -334,8 +324,6 @@ class Ui_Open(QtGui.QWidget):
         langtouse.install()
         self.loadCSS(Form,self.lng)
         self.settings(Form)
-        self.pushButton_2.setText(_translate("Form", _('Single Semester'), None))
-        self.pushButton.setText(_translate("Form", _('Complete Year'), None))
 
 
 
